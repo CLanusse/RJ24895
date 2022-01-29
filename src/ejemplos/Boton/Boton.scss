@@ -1,0 +1,17 @@
+.my-boton {
+    color: white;
+    background-color: rgb(79, 116, 238);
+    border: none;
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    &:hover {
+        background-color: lighten($color: rgb(79, 116, 238), $amount: 10%);
+    }
+    
+    &:active {
+        background-color: darken($color: rgb(79, 116, 238), $amount: 10%);
+    }
+}
