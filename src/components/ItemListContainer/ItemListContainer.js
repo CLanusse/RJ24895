@@ -1,29 +1,36 @@
-import { useState } from "react"
-import { Boton } from "../../ejemplos/Boton/Boton"
-import { Clicker } from "../../ejemplos/Clicker/Clicker"
-import { Contenedor } from "../../ejemplos/Contenedor/Contenedor"
+import { useEffect, useState } from "react"
+import { pedirDatos } from "../../helpers/pedirDatos"
+import { ItemList } from "../ItemList/ItemList"
 
+ 
+export const ItemListContainer = () => {
+    
+    const [productos, setProductos] = useState([])
+    const [loading, setLoading] = useState(false)
 
-export const ItemListContainer = ( {greeting} ) => {
+    useEffect( () => {
+        setLoading(true)
 
-    const [clicker, setClicker] = useState(true)
+        pedirDatos()
+            .then((res) => {
+                setProductos( res )
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+            .finally(() => {
+               setLoading(false)
+            })
 
-    console.log(clicker)
-
-    const mostrar = () => {
-        setClicker(!clicker)
-    }
+    }, [])
 
     return (
-        <Contenedor>
-            <h2>{greeting}</h2>
-            <hr/>
-            <Boton click={mostrar}>Mostrar clicker</Boton>
-
-            <hr/>
-
-            { clicker === true ? <Clicker/> : null }
-            
-        </Contenedor>
+        <>
+            {
+                loading 
+                    ? <h2>Loading...</h2> 
+                    : <ItemList productos={productos}/>
+            } 
+        </>
     )
 }
