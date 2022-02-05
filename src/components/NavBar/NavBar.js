@@ -1,15 +1,17 @@
-
+import {Link} from 'react-router-dom'
 
 export const NavBar = () => {
 
     return (
         <header className="header">
-            <h1>LOGO</h1>
+            <Link to='/' style={{color: '#FFF'}}>
+                <h1>LOGO</h1>
+            </Link>
 
             <nav className="header-nav">
-                <p className="header-link">Enlace 1</p>
-                <p className="header-link">Enlace 2</p>
-                <p className="header-link">Enlace 3</p>
+                <Link to='/productos/remeras' className='header-link'>Remeras</Link>
+                <Link to='/productos/zapatos' className='header-link'>Zapatos</Link>
+                <Link to='/productos/gorros' className='header-link'>Gorros</Link>
             </nav>
         </header>
     )
