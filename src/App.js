@@ -2,13 +2,16 @@ import { ItemListContainer } from "./components/ItemListContainer/ItemListContai
 import { NavBar } from "./components/NavBar/NavBar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/styles.scss'
+import { PokeApi } from "./ejemplos/PokeApi/PokeApi";
 
 function App() {
 
     return (
         <>
           <NavBar/>
-          <ItemListContainer greeting="Otro mensaje Coder!"/>
+
+          <PokeApi/>  
+          {/* <ItemListContainer/> */}
         </>
     );
 }
