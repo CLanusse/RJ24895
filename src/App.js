@@ -7,12 +7,15 @@ import { Nosotros } from './components/Nosotros'
 import { Contacto } from './components/Contacto'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { ItemDetailContainer } from "./components/ItemDetailContainer/ItemDetailContainer";
+import { CartProvider } from './context/CartContext'
+import { Cart } from "./components/Cart/Cart";
 
 function App() {
 
     return (
-        <BrowserRouter>
 
+      <CartProvider>
+        <BrowserRouter>
           <NavBar/>
           
           <Routes>
@@ -21,6 +24,7 @@ function App() {
             <Route path='/detail/:itemId' element={ <ItemDetailContainer/> }/>
             <Route path="/nosotros" element={ <Nosotros /> } />
             <Route path="/contacto" element={ <Contacto /> } />
+            <Route path='/cart' element={ <Cart/> } />
 
             {/* <Route path='/404' element={ <Error404/> }/> */}
             <Route path='*' element={ <Navigate to='/'/> }/>
@@ -28,6 +32,7 @@ function App() {
 
           {/* <Footer/> */}
         </BrowserRouter>
+      </CartProvider>
     )
 }
 
