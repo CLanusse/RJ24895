@@ -11,8 +11,6 @@ export const ItemListContainer = () => {
 
     const { catId } = useParams()
 
-    console.log(catId)
-
     useEffect( () => {
         setLoading(true)
 
@@ -32,6 +30,7 @@ export const ItemListContainer = () => {
             })
 
     }, [catId])
+
 
     return (
         <>
