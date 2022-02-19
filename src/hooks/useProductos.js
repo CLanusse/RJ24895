@@ -1,16 +1,13 @@
-import { useEffect, useState } from "react"
-import { pedirDatos } from "../../helpers/pedirDatos"
-import { ItemList } from "../ItemList/ItemList"
-import { useParams } from 'react-router-dom'
+import { useState, useEffect } from "react"
+import { pedirDatos } from '../helpers/pedirDatos'
 
- 
-export const ItemListContainer = () => {
 
-    
+
+
+export const useProductos = (catId) => {
+
     const [productos, setProductos] = useState([])
     const [loading, setLoading] = useState(false)
-
-    const {catId} = useParams()
 
     useEffect( () => {
         setLoading(true)
@@ -32,14 +29,5 @@ export const ItemListContainer = () => {
 
     }, [catId])
 
-
-    return (
-        <>
-            {
-                loading 
-                    ? <h2>Loading...</h2> 
-                    : <ItemList productos={productos}/>
-            } 
-        </>
-    )
+    return {productos, loading}
 }

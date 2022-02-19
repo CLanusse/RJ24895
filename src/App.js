@@ -9,15 +9,19 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { ItemDetailContainer } from "./components/ItemDetailContainer/ItemDetailContainer";
 import { CartProvider } from './context/CartContext'
 import { Cart } from "./components/Cart/Cart";
+import { PokeApi } from "./ejemplos/PokeApi/PokeApi";
+import { Posts } from "./ejemplos/Posts/Posts";
+import { useMobile } from "./hooks/useMobile";
 
 function App() {
+
 
     return (
 
       <CartProvider>
         <BrowserRouter>
           <NavBar/>
-          
+ 
           <Routes>
             <Route path="/" element={ <ItemListContainer/> }/>
             <Route path='/productos/:catId' element={ <ItemListContainer/> }/>

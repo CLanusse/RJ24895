@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from "react"
+import { useFetch } from "../../hooks/useFetch"
 
 
 // const KEY = '1234'
@@ -31,8 +32,9 @@ import { useEffect, useState } from "react"
 
 export const PokeApi = () => {
 
-    const [pokemon, setPokemon] = useState(null)
     const [id, setId] = useState(1)
+
+    const {data: pokemon} = useFetch(`https://pokeapi.co/api/v2/pokemon/${id}`, [id])
 
     const handleSiguiente = () => {
         setId(id + 1)
@@ -42,13 +44,6 @@ export const PokeApi = () => {
         id > 1 && setId(id - 1)
     }
 
-    useEffect(() => {
-        fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
-            .then( (resp) => resp.json() )
-            .then( (data) => {
-                setPokemon(data)
-            })
-    }, [id])
 
     return (
         <div className="container my-5">
