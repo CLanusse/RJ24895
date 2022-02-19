@@ -7,7 +7,8 @@ export const stock = [
         precio: 1500,
         img: 'https://via.placeholder.com/150',
         stock: 10,
-        categoria: 'zapatos'
+        categoria: 'zapatos',
+        oferta: false
     },
     {
         nombre: 'Producto 2',
@@ -16,7 +17,8 @@ export const stock = [
         precio: 2500,
         img: 'https://via.placeholder.com/150',
         stock: 10,
-        categoria: 'zapatos'
+        categoria: 'zapatos',
+        oferta: true
     },
     {
         nombre: 'Producto 3',
@@ -25,7 +27,8 @@ export const stock = [
         precio: 3500,
         img: 'https://via.placeholder.com/150',
         stock: 10,
-        categoria: 'remeras'
+        categoria: 'remeras',
+        oferta: false
     },
     {
         nombre: 'Producto 4',
@@ -34,7 +37,8 @@ export const stock = [
         precio: 4500,
         img: 'https://via.placeholder.com/150',
         stock: 10,
-        categoria: 'remeras'
+        categoria: 'remeras',
+        oferta: true
     },
     {
         nombre: 'Producto 5',
@@ -43,6 +47,7 @@ export const stock = [
         precio: 5500,
         img: 'https://via.placeholder.com/150',
         stock: 10,
-        categoria: 'gorros'
+        categoria: 'gorros',
+        oferta: false
     },
 ]

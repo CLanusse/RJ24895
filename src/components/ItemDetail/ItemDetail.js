@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import { Link } from "react-router-dom"
 import { CartContext } from "../../context/CartContext"
+import { Memo } from "../../ejemplos/Memo/Memo"
 import { ItemCount } from "../ItemCount/ItemCount"
 
 
@@ -46,6 +47,7 @@ export const ItemDetail = ({id, nombre, img, desc, precio, stock, categoria}) =>
                         <button
                             className="btn btn-success my-2"            
                             onClick={handleAgregar}
+                            disabled={cantidad === 0}
                         >
                             Agregar al carrito
                         </button>
