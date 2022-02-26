@@ -11,8 +11,6 @@ export const ItemListContainer = () => {
     const [productos, setProductos] = useState([])
     const [loading, setLoading] = useState(false)
 
-    console.log(productos)
-
     const {catId} = useParams()
 
     useEffect( () => {
