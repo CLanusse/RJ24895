@@ -1,46 +1,15 @@
-import { collection, addDoc, Timestamp, updateDoc, doc, getDoc } from "firebase/firestore"
 import { useContext, useState } from "react"
-import { Link, Navigate } from "react-router-dom"
+import { Navigate } from "react-router-dom"
 import { CartContext } from "../../context/CartContext"
-import { db } from "../../firebase/config"
-
-
+import { generarOrden } from "../../firebase/generarOrden"
+import { ThankYou } from "./ThankYou"
+import { validar } from "./validar"
 
 export const Checkout = () => {
 
     const {cart, totalCart, vaciarCart} = useContext(CartContext)
 
     const [orderId, setOrderId] = useState(null)
-
-    const generarOrden = () => {
-        const orden = {
-            comprador: values,
-            items: cart,
-            total: totalCart(),
-            fyh: Timestamp.fromDate(new Date())
-        } 
-
-        const ordersRef = collection(db, "orders")
-
-        addDoc(ordersRef, orden)
-            .then((resp) => {
-                
-                cart.forEach((item) => {
-                    const docRef = doc(db, 'productos', item.id)
-                    getDoc(docRef)
-                        .then((dbDoc) => {
-                            updateDoc(docRef, {stock: dbDoc.data().stock - item.cantidad})
-                        })
-                })
-
-                setOrderId(resp.id)
-                vaciarCart()
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-    }
-
 
     const [values, setValues] = useState({
         nombre: '',
@@ -57,33 +26,12 @@ export const Checkout = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
-        if (values.nombre.length < 5) {
-            alert("El nombre es demasiado corto")
-            return
-        }
-        if (values.email.length < 7) {
-            alert("El email es inválido")
-            return
-        }
-        if (values.tel.length < 8) {
-            alert("El teléfono es inválido")
-            return
-        }
-        
-        generarOrden()
+        validar(values) && generarOrden(values, cart, totalCart, setOrderId, vaciarCart)
     }
 
 
     if (orderId) {
-        return (
-            <div className="container my-5">
-                <h2>Gracias por tu compra!</h2>
-                <hr/>
-                <h3>Tu número de orden es: {orderId}</h3>
-                <Link to="/" className="btn btn-primary">Volver</Link>
-            </div>
-        )
+        return <ThankYou order={orderId}/>
     }
 
     if (cart.length === 0) {
