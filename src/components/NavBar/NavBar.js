@@ -1,15 +1,16 @@
-
+import { Link } from 'react-router-dom'
 
 export const NavBar = () => {
 
     return (
         <header className="header">
-            <h1>LOGO</h1>
+            
+            <Link className="header-link" to="/"><h1>LOGO</h1></Link>
 
             <nav className="header-nav">
-                <p className="header-link">Enlace 1</p>
-                <p className="header-link">Enlace 2</p>
-                <p className="header-link">Enlace 3</p>
+                <Link className="header-link" to="/productos/remeras">Remeras</Link>
+                <Link className="header-link" to="/productos/zapatillas">Zapatillas</Link>
+                <Link className="header-link" to="/productos/buzos">Buzos</Link>
             </nav>
         </header>
     )
