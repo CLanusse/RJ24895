@@ -11,6 +11,7 @@ import {
 import Nosotros from "./components/Nosotros/Nosotros";
 import Contacto from "./components/Contacto/Contacto";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
+import Modal from "./ejemplos/Modal/Modal";
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <BrowserRouter>
 
           <NavBar/>
+          {/* <Modal/> */}
 
           <Routes>
               <Route path="/" element={ <ItemListContainer/> }/>

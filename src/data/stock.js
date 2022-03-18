@@ -6,7 +6,7 @@ export const stock = [
         desc: 'Lorem ipsum producto 1',
         precio: 1500,
         img: 'https://via.placeholder.com/150',
-        stock: 50,
+        stock: 10,
         categoria: 'remeras'
     },
     {
@@ -15,7 +15,7 @@ export const stock = [
         desc: 'Lorem ipsum producto 2',
         precio: 2500,
         img: 'https://via.placeholder.com/150',
-        stock: 50,
+        stock: 15,
         categoria: 'remeras'
     },
     {
@@ -24,7 +24,7 @@ export const stock = [
         desc: 'Lorem ipsum producto 3',
         precio: 3500,
         img: 'https://via.placeholder.com/150',
-        stock: 50,
+        stock: 5,
         categoria: 'zapatillas'
     },
     {
@@ -33,7 +33,7 @@ export const stock = [
         desc: 'Lorem ipsum producto 4',
         precio: 4500,
         img: 'https://via.placeholder.com/150',
-        stock: 50,
+        stock: 15,
         categoria: 'zapatillas'
     },
     {
@@ -42,7 +42,7 @@ export const stock = [
         desc: 'Lorem ipsum producto 5',
         precio: 5500,
         img: 'https://via.placeholder.com/150',
-        stock: 50,
+        stock: 15,
         categoria: 'buzos'
     },
 ]
