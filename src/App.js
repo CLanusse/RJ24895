@@ -2,17 +2,31 @@ import { ItemListContainer } from "./components/ItemListContainer/ItemListContai
 import { NavBar } from "./components/NavBar/NavBar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/styles.scss'
-import { PokeApi } from "./ejemplos/PokeApi/PokeApi";
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import Contacto from "./components/Contacto/Contacto";
+import Nosotros from "./components/Nosotros/Nosotros";
+import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 
 function App() {
 
     return (
-        <>
+        <BrowserRouter>
+
           <NavBar/>
 
-          <PokeApi/>  
-          {/* <ItemListContainer/> */}
-        </>
+          <Routes>
+            <Route path="/" element={ <ItemListContainer/> }/>
+            <Route path="/category/:categoryId" element={ <ItemListContainer/> }/>
+            <Route path="/detail/:itemId" element={ <ItemDetailContainer/> } />
+            <Route path="/contacto" element={ <Contacto/> }/>
+            <Route path="/nosotros" element={ <Nosotros/> }/>
+
+            <Route path="*" element={ <Navigate to="/"/> }/>
+          </Routes>
+
+          {/* Footer */}
+
+        </BrowserRouter>
     );
 }
 
