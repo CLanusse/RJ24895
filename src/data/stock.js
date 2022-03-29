@@ -15,7 +15,7 @@ export const stock = [
         desc: 'Lorem ipsum producto 2',
         precio: 2500,
         img: 'https://via.placeholder.com/150',
-        stock: 50,
+        stock: 12,
         category: 'remeras'
     },
     {
