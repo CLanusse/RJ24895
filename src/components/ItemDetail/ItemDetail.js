@@ -1,5 +1,6 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useContext, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { CartContext } from "../../context/CartContext"
 import ItemCount from "../ItemCount/ItemCount"
 import Select from "../Select/Select"
 
@@ -17,6 +18,8 @@ const options = [
 // ]
 
 const ItemDetail = ({id, nombre, desc, img, precio, category, stock}) => {
+
+    const { addItem, isInCart } = useContext(CartContext)
 
     const navigate = useNavigate()
 
@@ -38,7 +41,7 @@ const ItemDetail = ({id, nombre, desc, img, precio, category, stock}) => {
             cantidad
         }
 
-        console.log(itemToAdd)
+        addItem(itemToAdd)
     }
 
     return (
@@ -53,13 +56,17 @@ const ItemDetail = ({id, nombre, desc, img, precio, category, stock}) => {
                 onSelect={setColor}
             />
             
-            <ItemCount 
-                max={stock}
-                cantidad={cantidad}
-                setCantidad={setCantidad}
-                onAdd={agregarAlCarrito}
-            />
-
+            {
+                !isInCart(id)
+                    ? <ItemCount 
+                            max={stock}
+                            cantidad={cantidad}
+                            setCantidad={setCantidad}
+                            onAdd={agregarAlCarrito}
+                        />
+                    : <Link to="/cart" className="btn btn-success d-block my-3">Terminar mi compra</Link>
+            }
+            
             <hr/>
             <button className="btn btn-outline-primary" onClick={handleNavigate}>Volver</button>
             {/* <button className="btn btn-outline-primary" onClick={() => navigate(-1)}>Volver</button> */}

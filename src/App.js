@@ -6,27 +6,32 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Contacto from "./components/Contacto/Contacto";
 import Nosotros from "./components/Nosotros/Nosotros";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
+import Cart from "./components/Cart/Cart";
+import { CartProvider } from "./context/CartContext";
 
 function App() {
 
     return (
-        <BrowserRouter>
+        <CartProvider>
+            <BrowserRouter>
+              <NavBar/>
 
-          <NavBar/>
+              <Routes>
+                <Route path="/" element={ <ItemListContainer/> }/>
+                <Route path="/category/:categoryId" element={ <ItemListContainer/> }/>
+                <Route path="/detail/:itemId" element={ <ItemDetailContainer/> } />
+                <Route path="/contacto" element={ <Contacto/> }/>
+                <Route path="/nosotros" element={ <Nosotros/> }/>
+                <Route path="/cart" element={ <Cart/> }/>
 
-          <Routes>
-            <Route path="/" element={ <ItemListContainer/> }/>
-            <Route path="/category/:categoryId" element={ <ItemListContainer/> }/>
-            <Route path="/detail/:itemId" element={ <ItemDetailContainer/> } />
-            <Route path="/contacto" element={ <Contacto/> }/>
-            <Route path="/nosotros" element={ <Nosotros/> }/>
+                <Route path="*" element={ <Navigate to="/"/> }/>
+              </Routes>
 
-            <Route path="*" element={ <Navigate to="/"/> }/>
-          </Routes>
+              {/* Footer */}
 
-          {/* Footer */}
+            </BrowserRouter>
+        </CartProvider>
 
-        </BrowserRouter>
     );
 }
 
