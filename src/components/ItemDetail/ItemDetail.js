@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { CartContext } from "../../context/CartContext"
+import Memo from "../../ejemplos/Memo/Memo"
 import ItemCount from "../ItemCount/ItemCount"
 import Select from "../Select/Select"
 
@@ -27,11 +28,12 @@ const ItemDetail = ({id, nombre, desc, img, precio, category, stock}) => {
         navigate(-1)
     }
 
-    const [cantidad, setCantidad] = useState(1)
+    const [cantidad, setCantidad] = useState(0)
     const [color, setColor] = useState('L')
 
 
     const agregarAlCarrito = () => {
+
         const itemToAdd = {
             id,
             nombre,
@@ -41,7 +43,7 @@ const ItemDetail = ({id, nombre, desc, img, precio, category, stock}) => {
             cantidad
         }
 
-        addItem(itemToAdd)
+        cantidad > 0 && addItem(itemToAdd)
     }
 
     return (
@@ -51,21 +53,27 @@ const ItemDetail = ({id, nombre, desc, img, precio, category, stock}) => {
             <p>{desc}</p>
             <h4>Precio: ${precio}</h4>
             <small>Stock disponible: {stock}</small>
+            { stock === 0 && <p style={{color: 'red', fontWeight: '700'}}>¡Item sin stock!</p> }
+
             <Select 
                 options={options}
                 onSelect={setColor}
-            />
+            />   
+
+            <Memo/>
             
-            {
-                !isInCart(id)
+            <>
+                {
+                    !isInCart(id)
                     ? <ItemCount 
-                            max={stock}
-                            cantidad={cantidad}
-                            setCantidad={setCantidad}
-                            onAdd={agregarAlCarrito}
-                        />
+                        max={stock}
+                        cantidad={cantidad}
+                        setCantidad={setCantidad}
+                        onAdd={agregarAlCarrito}
+                    />
                     : <Link to="/cart" className="btn btn-success d-block my-3">Terminar mi compra</Link>
-            }
+                }
+            </>
             
             <hr/>
             <button className="btn btn-outline-primary" onClick={handleNavigate}>Volver</button>

@@ -10,9 +10,18 @@ const CartWidget = () => {
     return (
         <Link to={"/cart"} className="cart-widget">
             <BsFillCartFill/>
-            <span>{cartQuantity()}</span>
+            <span>{cartQuantity() || ''}</span> 
         </Link>
     )
 }
 
 export default CartWidget
+
+
+// -- falsy --
+// false
+// 0
+// NaN
+// ""
+// null
+// undefined

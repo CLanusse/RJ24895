@@ -24,7 +24,7 @@ export const stock = [
         desc: 'Lorem ipsum producto 3',
         precio: 3500,
         img: 'https://via.placeholder.com/150',
-        stock: 50,
+        stock: 5,
         category: 'buzos'
     },
     {
@@ -42,7 +42,7 @@ export const stock = [
         desc: 'Lorem ipsum producto 5',
         precio: 5500,
         img: 'https://via.placeholder.com/150',
-        stock: 50,
+        stock: 8,
         category: 'zapatillas'
     },
     {
@@ -51,7 +51,7 @@ export const stock = [
         desc: 'Lorem ipsum producto 6',
         precio: 6500,
         img: 'https://via.placeholder.com/150',
-        stock: 50,
+        stock: 0,
         category: 'zapatillas'
     },
 ]
