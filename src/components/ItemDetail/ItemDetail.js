@@ -1,7 +1,6 @@
 import { useContext, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { CartContext } from "../../context/CartContext"
-import Memo from "../../ejemplos/Memo/Memo"
 import ItemCount from "../ItemCount/ItemCount"
 import Select from "../Select/Select"
 
@@ -59,8 +58,6 @@ const ItemDetail = ({id, nombre, desc, img, precio, category, stock}) => {
                 options={options}
                 onSelect={setColor}
             />   
-
-            <Memo/>
             
             <>
                 {
